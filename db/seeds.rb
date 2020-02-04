@@ -1,11 +1,10 @@
-prework_tutorial_data = {
+prework_tutorial = Tutorial.create!({
   "title"=>"Back End Engineering - Prework",
   "description"=>"Videos for prework.",
   "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
   "playlist_id"=>"PL1Y67f0xPzdN6C-LPuTQ5yzlBoz2joWa5",
-  "classroom"=>false,
-}
-prework_tutorial = Tutorial.create! prework_tutorial_data
+  "classroom"=>false
+})
 
 prework_tutorial.videos.create!({
   "title"=>"Prework - Environment Setup",
@@ -28,6 +27,7 @@ prework_tutorial.videos.create!({
   "thumbnail"=>"https://i.ytimg.com/vi/iXLwXvev4X8/hqdefault.jpg",
   "position"=>3
 })
+
 prework_tutorial.videos.create!({
   "title"=>"Prework - Arrays",
   "description"=> Faker::Hipster.paragraph(2, true),
@@ -36,16 +36,14 @@ prework_tutorial.videos.create!({
   "position"=>4
 })
 
-
-mod_1_tutorial_data = {
+m1_tutorial = Tutorial.create!({
   "title"=>"Back End Engineering - Module 1",
   "description"=>"Videos related to Mod 1.",
   "thumbnail"=>"https://i.ytimg.com/vi/tZDBWXZzLPk/hqdefault.jpg",
   "playlist_id"=>"PL1Y67f0xPzdNsXqiJs1s4NlpI6ZMNdMsb",
-  "classroom"=>false,
-}
+  "classroom"=>false
+})
 
-m1_tutorial = Tutorial.create! mod_1_tutorial_data
 
 m1_tutorial.videos.create!({
   "title"=>"Flow Control in Ruby",
@@ -54,6 +52,7 @@ m1_tutorial.videos.create!({
   "thumbnail"=>"https://i.ytimg.com/vi/tZDBWXZzLPk/hqdefault.jpg",
   "position"=>1
 })
+
 m1_tutorial.videos.create!({
   "title"=>"How to use SimpleCov",
   "description"=> Faker::Hipster.paragraph(2, true),
@@ -62,15 +61,14 @@ m1_tutorial.videos.create!({
   "position"=>2
 })
 
-mod_3_tutorial_data = {
+mod_3_tutorial = Tutorial.create!({
   "title"=>"Back End Engineering - Module 3",
   "description"=>"Video content for Mod 3.",
   "thumbnail"=>"https://i.ytimg.com/vi/R5FPYQgB6Zc/hqdefault.jpg",
   "playlist_id"=>"PL1Y67f0xPzdOq2FcpWnawJeyJ3ELUdBkJ",
   "classroom"=>false,
   "tag_list"=>["Internet", "BDD", "Ruby"],
-}
-m3_tutorial = Tutorial.create! mod_3_tutorial_data
+})
 
 m3_tutorial.videos.create!({
   "title"=>"Customizing JSON in your API",

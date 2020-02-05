@@ -61,7 +61,7 @@ m1_tutorial.videos.create!({
   "position"=>2
 })
 
-mod_3_tutorial = Tutorial.create!({
+m3_tutorial = Tutorial.create!({
   "title"=>"Back End Engineering - Module 3",
   "description"=>"Video content for Mod 3.",
   "thumbnail"=>"https://i.ytimg.com/vi/R5FPYQgB6Zc/hqdefault.jpg",
@@ -113,4 +113,5 @@ m3_tutorial.videos.create!({
   "position"=>6
 })
 
+User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)
 User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)

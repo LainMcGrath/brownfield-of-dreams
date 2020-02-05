@@ -32,12 +32,26 @@ class SessionsController < ApplicationController
       oauth_response = Faraday.get("https://api.github.com/user?access_token=#{token}")
 
     auth = JSON.parse(oauth_response.body)
-     current_user.uid = auth["id"]
-     current_user.token = token
-     current_user.save
-     # require "pry"; binding.pry
-    redirect_to dashboard_path
-  end
+
+    User.update(session[:user_id],
+     :uid => auth["id"],
+     :token => token,
+     :login => auth['login'])
+
+     redirect_to user_repos_path
+   end
+
+    # def repos
+    #   #collect repo information
+    #
+    #   response = Faraday.get("https://api.github.com/user/repos?access_token=#{current_user.token}")
+    #
+    #   repo_response = JSON.parse(response.body)
+    #
+    #   @display_repos = repo_response[0..4]
+    #
+    #   redirect_to dashboard_path
+    # end
 
   def destroy
     session[:user_id] = nil

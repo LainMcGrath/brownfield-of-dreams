@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'webmock/rspec'
 require 'vcr'
 require 'json'
 

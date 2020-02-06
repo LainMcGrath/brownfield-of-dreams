@@ -11,7 +11,7 @@ class User < ApplicationRecord
   def self.github_login(session_params, user)
     client_id = '13bb7d4ef6b3c23576d2'
     client_secret = 'd1ba88fb71c5a1f99156628b3aa15a68741fa9e0'
-    code = session_params[:code]
+    code = session_params[:code] 
 
     response = Faraday.post("https://github.com/login/oauth/access_token?client_id=#{client_id}&client_secret=#{client_secret}&code=#{code}")
     token_params = response.body.split("&").first.split('=')

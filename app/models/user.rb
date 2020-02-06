@@ -1,14 +1,15 @@
 class User < ApplicationRecord
   has_many :user_videos
   has_many :videos, through: :user_videos
-  #
-  # validates :email, uniqueness: true, presence: true
+
+  validates :email, uniqueness: true, presence: true
   # validates_presence_of :password
-  # validates_presence_of :first_name
+  validates_presence_of :first_name
   enum role: %i[default admin]
   has_secure_password
 
-  def self.github_login(session_params)
+
+  def self.github_login(session_params, user)
     client_id = '13bb7d4ef6b3c23576d2'
     client_secret = 'd1ba88fb71c5a1f99156628b3aa15a68741fa9e0'
     code = session_params[:code]
@@ -27,25 +28,9 @@ class User < ApplicationRecord
 
     auth = JSON.parse(oauth_response.body)
 
-
-    user = User.find_by(uid: auth['id'])
-    User.update(user.id,
-     :uid => auth["id"],
-     :token => token,
-     :login => auth['login'])
-# require "pry"; binding.pry
-    # user = User.find_or_create_by(uid: auth['id'])
-    # user.login = auth['login']
-    # user.uid = auth['id']
-    # user.token = token
-    # user.save!
-    require "pry"; binding.pry
-
-
-    user
-     # session[:user_id] = user.id
-    # github: OAuth2 token (sent in a header)
-    # curl -H "Authorization: token OAUTH-TOKEN" https://api.github.com
-    # Note: GitHub recommends sending OAuth tokens using the Authorization header.
+    user.login = auth['login']
+    user.uid = auth['id']
+    user.token = token
+    user.save
   end
 end

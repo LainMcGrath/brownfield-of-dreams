@@ -10,7 +10,7 @@
   <section>
 <section class="github-repos">
     <%= link_to "Log in to GitHub", "https://github.com/login/oauth/authorize?client_id=13bb7d4ef6b3c23576d2&scope=repo" %>
-  <% if current_user.token %>
+  <% if current_user.token != nil %>
   <h3>Github Repositories</h3>
     <ul><% @display_repos.each do |repo| %>
       <li><%= link_to "#{repo['name']}", "#{repo['svn_url']}" %> </li>

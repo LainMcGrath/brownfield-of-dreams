@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def show
-    
     response = Faraday.get("https://api.github.com/user/repos?access_token=#{current_user.token}")
     repo_response = JSON.parse(response.body)
     @display_repos = repo_response[0..4]
@@ -21,14 +20,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-    User.github_login(params)
-    redirect_to login_path
-  end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password)
+    params.require(:user).permit(:email, :first_name, :last_name, :password, :token, :uid, :login)
   end
 end

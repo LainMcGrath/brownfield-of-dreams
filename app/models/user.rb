@@ -1,10 +1,10 @@
 class User < ApplicationRecord
   has_many :user_videos
   has_many :videos, through: :user_videos
-
-  validates :email, uniqueness: true, presence: true
-  validates_presence_of :password
-  validates_presence_of :first_name
+  #
+  # validates :email, uniqueness: true, presence: true
+  # validates_presence_of :password
+  # validates_presence_of :first_name
   enum role: %i[default admin]
   has_secure_password
 
@@ -27,12 +27,22 @@ class User < ApplicationRecord
 
     auth = JSON.parse(oauth_response.body)
 
-     user = User.find_or_create_by(id: auth["id"])
-     user.uid = auth["id"]
-     user.token = token
-     user.save
 
-     require "pry"; binding.pry
+    user = User.find_by(uid: auth['id'])
+    User.update(user.id,
+     :uid => auth["id"],
+     :token => token,
+     :login => auth['login'])
+# require "pry"; binding.pry
+    # user = User.find_or_create_by(uid: auth['id'])
+    # user.login = auth['login']
+    # user.uid = auth['id']
+    # user.token = token
+    # user.save!
+    require "pry"; binding.pry
+
+
+    user
      # session[:user_id] = user.id
     # github: OAuth2 token (sent in a header)
     # curl -H "Authorization: token OAUTH-TOKEN" https://api.github.com

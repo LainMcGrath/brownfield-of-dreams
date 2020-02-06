@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'webmock/rspec'
 require 'vcr'
+require 'json'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)

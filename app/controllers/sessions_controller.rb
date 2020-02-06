@@ -15,29 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def github
-      client_id = '13bb7d4ef6b3c23576d2'
-      client_secret = 'd1ba88fb71c5a1f99156628b3aa15a68741fa9e0'
-      code = params[:code]
-      response = Faraday.post("https://github.com/login/oauth/access_token?client_id=#{client_id}&client_secret=#{client_secret}&code=#{code}")
-
-      pairs = response.body.split("&")
-      response_hash = {}
-      pairs.each do |pair|
-        key, value = pair.split("=")
-        response_hash[key] = value
-      end
-
-      token = response_hash["access_token"]
-
-      oauth_response = Faraday.get("https://api.github.com/user?access_token=#{token}")
-
-    auth = JSON.parse(oauth_response.body)
-
-    User.update(session[:user_id],
-     :uid => auth["id"],
-     :token => token,
-     :login => auth['login'])
-
+      User.github_login(params)
      redirect_to user_repos_path
    end
 

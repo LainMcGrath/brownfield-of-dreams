@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   def show
-    # require "pry"; binding.pry
-    # github = User.github_repos
-    #create instance variable to pass github repos to show page
-    #create model method that makes call - perhaps use service here? Start with model
-    #render json --- need to create serializer
+    
+    response = Faraday.get("https://api.github.com/user/repos?access_token=#{current_user.token}")
+    repo_response = JSON.parse(response.body)
+    @display_repos = repo_response[0..4]
   end
 
   def new
@@ -20,6 +19,11 @@ class UsersController < ApplicationController
       flash[:error] = 'Username already exists'
       render :new
     end
+  end
+
+  def update
+    User.github_login(params)
+    redirect_to login_path
   end
 
   private

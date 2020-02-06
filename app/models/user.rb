@@ -8,7 +8,6 @@ class User < ApplicationRecord
   enum role: %i[default admin]
   has_secure_password
 
-
   def self.github_login(session_params, user)
     client_id = '13bb7d4ef6b3c23576d2'
     client_secret = 'd1ba88fb71c5a1f99156628b3aa15a68741fa9e0'
@@ -23,7 +22,13 @@ class User < ApplicationRecord
 
     user.login = auth['login']
     user.uid = auth['id']
-    user.token = response_hash["access_token"]
+    user.token = token["access_token"]
     user.save
+  end
+
+  def self.fetch_repos(user_id)
+    user = User.find(user_id)
+    response = Faraday.get("https://api.github.com/user/repos?access_token=#{user.token}")
+    repo_response = JSON.parse(response.body)
   end
 end

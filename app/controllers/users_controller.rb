@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   def show
-    @display_repos = User.fetch_repos(session[:user_id])[0..4]
+    # user = User.find(session[:user_id])
+    user = User.find(current_user.id)
+    
+    render locals: {
+      display_repos: User.fetch_repos(user.id)
+    }
   end
 
   def new
@@ -22,6 +27,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password, :token, :uid, :login)
+    params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
 end

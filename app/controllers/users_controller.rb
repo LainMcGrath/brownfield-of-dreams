@@ -3,9 +3,11 @@ class UsersController < ApplicationController
     # user = User.find(session[:user_id])
     user = User.find(current_user.id)
     
-    render locals: {
-      display_repos: User.fetch_repos(user.id)
-    }
+    if user.token
+      render locals: {
+        display_repos: User.fetch_repos(user.id)
+      }
+    end
   end
 
   def new

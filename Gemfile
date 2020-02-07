@@ -48,6 +48,7 @@ group :test do
   gem 'rubocop'
   gem 'vcr'
   gem 'webmock'
+  gem 'rack_session_access'
 end
 
 group :development do

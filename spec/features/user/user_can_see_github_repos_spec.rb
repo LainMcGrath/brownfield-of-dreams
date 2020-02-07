@@ -1,8 +1,9 @@
 require 'rails_helper'
 
-feature 'User show page' do
+RSpec.describe 'User show page' do
   scenario 'can login to github', :vcr do
     user = create(:user, token: ENV['GITHUB_TOKEN'])
+    page.set_rack_session(github: user.email)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -14,6 +15,7 @@ feature 'User show page' do
 
   scenario 'user only sees their own repos', :vcr do
     user_1 = create(:user, token: ENV['GITHUB_TOKEN'])
+    page.set_rack_session(github: user_1.email)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     visit dashboard_path
@@ -28,7 +30,8 @@ feature 'User show page' do
   scenario 'user only sees their own repos pt 2', :vcr do
     user_2 = create(:user, token: ENV['JORDANS_GITHUB'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
-
+    page.set_rack_session(github: user_2.email)
+    # require "pry"; binding.prye
     visit dashboard_path
 
     expect(page).to have_link("activerecord-obstacle-course")

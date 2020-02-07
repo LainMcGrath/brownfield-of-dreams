@@ -9,7 +9,7 @@
   </ul>
   <section>
     <% if session[:github] == nil %>
-      <%= link_to "Log in to GitHub", github_name_login_path %>
+      <%= button_to "Log in to GitHub", github_name_login_path %>
     <% else %>
     <h3>Github Repositories</h3>
       <% display_repos.each do |repo| %>

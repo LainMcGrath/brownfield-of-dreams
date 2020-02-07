@@ -2,10 +2,10 @@ class UsersController < ApplicationController
   def show
     # user = User.find(session[:user_id])
     user = User.find(current_user.id)
-    
+
     if user.token
       render locals: {
-        display_repos: User.fetch_repos(user.id)
+        display_repos: User.fetch_repos(user.token)
       }
     end
   end

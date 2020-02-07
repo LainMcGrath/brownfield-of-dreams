@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     # user = User.find(session[:user_id])
     user = User.find(current_user.id)
 
-    if user.token
+    if session[:github]
       render locals: {
         display_repos: User.fetch_repos(user.token)
       }

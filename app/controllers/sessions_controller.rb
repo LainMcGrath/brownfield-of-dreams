@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   def new
     @user ||= User.new
-
   end
 
   def create
@@ -15,12 +14,13 @@ class SessionsController < ApplicationController
   end
 
   def update
-    user = User.find(session[:user_id])
-    User.github_login(params, user)
+    User.update_user(request.env['omniauth.auth'], current_user)
+    session[:github] = current_user.login
     redirect_to dashboard_path
   end
 
   def destroy
+    session[:github] = nil
     session[:user_id] = nil
     redirect_to root_path
   end

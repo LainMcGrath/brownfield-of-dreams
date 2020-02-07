@@ -36,6 +36,18 @@ feature 'User show page' do
     expect(page).to have_link("backend_module_0_capstone")
     expect(page).to have_link("battleship")
     expect(page).to have_link("black_thursday_lite")
+  end
 
+  scenario 'user can see a followers section' do
+    user_1 = create(:user, token: ENV['GITHUB_TOKEN'])
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+
+    visit dashboard_path
+
+    within ".github" do
+      within ".followers" do
+        expect(page).to have_link("")
+      end
+    end
   end
 end

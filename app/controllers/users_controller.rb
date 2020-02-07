@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   def show
-    user = User.find(session[:user_id])
-    @display_repos = User.fetch_repos(user.id)[0..4]
+    user = User.find(current_user.id)
+    if session[:github]
+      render locals: {
+        user: GithubUser.new(current_user.token)
+      }
+    end
   end
 
   def new

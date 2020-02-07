@@ -8,13 +8,14 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
-    <%= link_to "Log in to GitHub", "https://github.com/login/oauth/authorize?client_id=13bb7d4ef6b3c23576d2&scope=repo" %>
-  <% if current_user.token != nil %> 
-  <h3>Github Repositories</h3>
-    <% display_repos.each do |repo| %>
-    <ul class="github-repos">
-      <li><%= link_to "#{repo.name}", "#{repo.url}" %> </li>
-    </ul>
+    <% if session[:github] == nil %>
+      <%= link_to "Log in to GitHub", github_name_login_path %>
+    <% else %>
+    <h3>Github Repositories</h3>
+      <% display_repos.each do |repo| %>
+      <ul class="github-repos">
+        <li><%= link_to "#{repo.name}", "#{repo.url}" %> </li>
+      </ul>
     <% end %>
   <% end %>
     <h1>Bookmarked Segments</h1>

@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   def show
-    # user = User.find(session[:user_id])
     user = User.find(current_user.id)
-
     if session[:github]
       render locals: {
         display_repos: User.fetch_repos(user.token)

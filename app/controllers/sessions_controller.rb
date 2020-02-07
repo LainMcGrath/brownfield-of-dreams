@@ -6,11 +6,11 @@ class SessionsController < ApplicationController
   def create
     if (user = User.find_by(email: params[:session][:email])) && user&.authenticate(params[:session][:password])
       session[:user_id] = user.id
+      redirect_to dashboard_path
     else
       flash[:error] = 'Looks like your email or password is invalid'
       render :new
     end
-    redirect_to dashboard_path
   end
 
   def update

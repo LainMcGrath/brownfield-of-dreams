@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'webmock/rspec'
 require 'vcr'
+require 'json'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -15,7 +16,9 @@ VCR.configure do |config|
   config.cassette_library_dir = 'spec/cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
-  config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data('<YOUTUBE_API_KEY>') { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data('<GITHUB_TOKEN>') { ENV['GITHUB_TOKEN'] }
+  config.filter_sensitive_data('<JORDANS_GITHUB>') { ENV['JORDANS_GITHUB'] }
 end
 
 

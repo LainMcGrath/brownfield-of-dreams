@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'webmock/rspec'
 require 'vcr'
 require 'json'
 
@@ -19,6 +18,7 @@ VCR.configure do |config|
   config.filter_sensitive_data('<YOUTUBE_API_KEY>') { ENV['YOUTUBE_API_KEY'] }
   config.filter_sensitive_data('<GITHUB_TOKEN>') { ENV['GITHUB_TOKEN'] }
   config.filter_sensitive_data('<JORDANS_GITHUB>') { ENV['JORDANS_GITHUB'] }
+  # config.allow_http_connections_when_no_cassette = true
 end
 
 
@@ -42,6 +42,8 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+OmniAuth.config.test_mode = true
 
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

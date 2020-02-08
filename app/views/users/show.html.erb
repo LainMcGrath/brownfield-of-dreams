@@ -8,14 +8,32 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
-<section class="github-repos">
-    <%= link_to "Log in to GitHub", "https://github.com/login/oauth/authorize?client_id=13bb7d4ef6b3c23576d2&scope=repo" %>
-  <% if current_user.token != nil %>
-  <h3>Github Repositories</h3>
-    <ul><% @display_repos.each do |repo| %>
-      <li><%= link_to "#{repo['name']}", "#{repo['svn_url']}" %> </li>
+    <% if session[:github] == nil %>
+      <%= button_to "Log in to GitHub", github_name_login_path %>
+    <% else %>
+    <section class="github">
+    
+    <h3>Github Repositories</h3>
+      <% user.repos.each do |repo| %>
+      <ul class="github-repos">
+        <li><%= link_to "#{repo.name}", "#{repo.url}" %> </li><br><br>
+      </ul>
     <% end %>
-  </ul>
+
+    <h3>Github Followers</h3>
+      <% user.followers.each do |follower| %>
+        <ul class="followers">
+          <li><%= link_to "#{follower.name}", "#{follower.url_link}" %></li><br><br>
+        </ul>
+      <% end %>
+
+    <h3>Who You are Following on Github</h3>
+    <% user.followings.each do |user| %>
+      <ul class ="following">
+        <li><%= link_to "#{user.name}", "#{user.url_link}" %></li>
+      </ul>
+    <% end %>
+  </section>
   <% end %>
     <h1>Bookmarked Segments</h1>
   </section>

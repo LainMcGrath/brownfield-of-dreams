@@ -27,6 +27,7 @@ gem 'omniauth-census', git: 'https://github.com/turingschool-projects/omniauth-c
 gem 'omniauth-google-oauth2'
 gem 'will_paginate'
 gem 'yt', '~> 0.29.1'
+gem 'omniauth-github'
 
 group :development, :test do
   gem 'awesome_print'
@@ -47,6 +48,7 @@ group :test do
   gem 'rubocop'
   gem 'vcr'
   gem 'webmock'
+  gem 'rack_session_access'
 end
 
 group :development do

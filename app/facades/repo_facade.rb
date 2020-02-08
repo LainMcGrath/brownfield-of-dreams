@@ -1,7 +1,8 @@
 class RepoFacade
-  attr_reader :name, :url
+  attr_reader :name, 
+              :url
+
   def initialize(info)
-    require 'pry'; binding.pry
     @name = info['name']
     @url = info['svn_url']
   end

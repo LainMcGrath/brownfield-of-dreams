@@ -16,6 +16,7 @@ RSpec.describe 'User show page' do
   scenario 'user only sees their own repos', :vcr do
     user_1 = create(:user, token: ENV['GITHUB_TOKEN'])
     page.set_rack_session(github: user_1.email)
+    
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     visit dashboard_path
@@ -31,7 +32,7 @@ RSpec.describe 'User show page' do
     user_2 = create(:user, token: ENV['JORDANS_GITHUB'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
     page.set_rack_session(github: user_2.email)
-    # require "pry"; binding.prye
+
     visit dashboard_path
 
     expect(page).to have_link("activerecord-obstacle-course")
@@ -41,15 +42,62 @@ RSpec.describe 'User show page' do
     expect(page).to have_link("black_thursday_lite")
   end
 
-  scenario 'user can see a followers section' do
+  scenario 'user can see a followers section', :vcr do
     user_1 = create(:user, token: ENV['GITHUB_TOKEN'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+    page.set_rack_session(github: user_1.email)
 
     visit dashboard_path
 
     within ".github" do
-      within ".followers" do
-        expect(page).to have_link("")
+      expect(page).to have_css(".followers", count: 2)
+      within(first('.followers')) do
+        expect(page).to have_link("torihuang")
+      end
+    end
+  end
+
+  scenario 'user can see a followers section pt 2', :vcr do
+    user_2 = create(:user, token: ENV['JORDANS_GITHUB'])
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
+    page.set_rack_session(github: user_2.email)
+
+    visit dashboard_path
+
+    within ".github" do
+      expect(page).to have_css(".followers", count: 2)
+      within(first('.followers')) do
+        expect(page).to have_link("Bradniedt")
+      end
+    end
+  end
+
+  scenario 'user can see a following section', :vcr do
+    user_1 = create(:user, token: ENV['GITHUB_TOKEN'])
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+    page.set_rack_session(github: user_1.email)
+
+    visit dashboard_path
+
+    within ".github" do
+      expect(page).to have_css(".following", count: 1)
+      within(first('.following')) do
+        expect(page).to have_link("torihuang")
+      end
+    end
+  end
+
+  scenario 'user can see a following section pt 2', :vcr do
+    user_1 = create(:user, token: ENV['JORDANS_GITHUB'])
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+    page.set_rack_session(github: user_1.email)
+
+    visit dashboard_path
+
+    within ".github" do
+      expect(page).to have_css(".following", count: 1)
+      within(first('.following')) do
+        expect(page).to have_link("LainMcGrath")
       end
     end
   end

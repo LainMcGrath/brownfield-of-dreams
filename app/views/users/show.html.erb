@@ -12,13 +12,27 @@
       <%= button_to "Log in to GitHub", github_name_login_path %>
     <% else %>
     <section class="github">
+    
     <h3>Github Repositories</h3>
       <% user.repos.each do |repo| %>
       <ul class="github-repos">
         <li><%= link_to "#{repo.name}", "#{repo.url}" %> </li><br><br>
       </ul>
     <% end %>
+
     <h3>Github Followers</h3>
+      <% user.followers.each do |follower| %>
+        <ul class="followers">
+          <li><%= link_to "#{follower.name}", "#{follower.url_link}" %></li><br><br>
+        </ul>
+      <% end %>
+
+    <h3>Who You are Following on Github</h3>
+    <% user.followings.each do |user| %>
+      <ul class ="following">
+        <li><%= link_to "#{user.name}", "#{user.url_link}" %></li>
+      </ul>
+    <% end %>
   </section>
   <% end %>
     <h1>Bookmarked Segments</h1>

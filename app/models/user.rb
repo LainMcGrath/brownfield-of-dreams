@@ -15,11 +15,8 @@ class User < ApplicationRecord
     current_user.save!
   end
 
-  def self.fetch_repos(token)
-    response = GithubService.new.fetch_repos(token)
-    repo_response = JSON.parse(response.body)[0..4]
-    # repo_response.map do |repo_info|
-    #   RepoFacade.new(repo_info)
-    # end
-  end
+  # def self.fetch_repos(token)
+  #   response = GithubService.new.fetch_repos(token)
+  #   repo_response = JSON.parse(response.body)[0..4]
+  # end
 end

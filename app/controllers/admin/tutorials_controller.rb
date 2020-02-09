@@ -1,20 +1,21 @@
 class Admin::TutorialsController < Admin::BaseController
-  def edit
-    @tutorial = Tutorial.find(params[:id])
+  def new
+    @tutorial = Tutorial.new
   end
 
   def create
     tutorial = Tutorial.create(tutorial_params)
     if tutorial.save
-      redirect_to admin_dashboard_path
+      redirect_to tutorial_path(tutorial)
+      flash[:notice] = 'Tutorial successfully created'
     else
       flash[:notice] = tutorial.errors.full_messages
       render :new
     end
   end
 
-  def new
-    @tutorial = Tutorial.new
+  def edit
+    @tutorial = Tutorial.find(params[:id])
   end
 
   def update

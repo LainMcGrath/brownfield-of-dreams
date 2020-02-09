@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
-    resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
-      resources :videos, only: [:create]
+    resources :tutorials, only: [:create, :edit, :update, :destroy, :new, :show] do
+      resources :videos, only: [:new, :create]
     end
     resources :videos, only: [:edit, :update, :destroy]
 
@@ -24,13 +24,13 @@ Rails.application.routes.draw do
     end
   end
 
+
   get '/login', to: "sessions#new"
+  post '/login', to: "sessions#create"
+  delete '/logout', to: "sessions#destroy"
 
   get 'auth/github', as: 'github_name_login'
   get '/auth/:provider/callback', to: "sessions#update"
-
-  post '/login', to: "sessions#create"
-  delete '/logout', to: "sessions#destroy"
 
   get '/dashboard', to: 'users#show'
   get '/about', to: 'about#show'
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :update, :edit]
 
-  resources :tutorials, only: [:show, :index] do
+  resources :tutorials, only: [:show, :index, :update] do
     resources :videos, only: [:show, :index]
   end
 

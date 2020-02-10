@@ -23,6 +23,7 @@
       <% user.followers.each do |follower| %>
         <ul class="followers">
           <li><%= link_to "#{follower.name}", "#{follower.url_link}" %></li>
+          <%= button_to "Friend", "/friendship/#{current_user.id}/#{follower.id}", method: :post %>
         </ul>
       <% end %>
 

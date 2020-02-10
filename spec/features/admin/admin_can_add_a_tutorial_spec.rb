@@ -21,7 +21,7 @@ RSpec.feature 'Admin can add a new tutorial' do
     expect(page).to have_content('Tutorial successfully created')
   end
 
-  xit "Cannot create a tutorial with missing information" do
+  it "Cannot create a tutorial with missing information" do
     admin = create(:admin)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -35,6 +35,6 @@ RSpec.feature 'Admin can add a new tutorial' do
     fill_in 'Description', with: description
 
     click_on('Create new tutorial')
-    expect(page).to have_content("Thumbnail cannot be blank")
+    expect(page).to have_content("Thumbnail can't be blank")
   end
 end

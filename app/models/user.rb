@@ -20,4 +20,12 @@ class User < ApplicationRecord
     current_user.login = params[:extra][:raw_info][:login]
     current_user.save!
   end
+
+  def self.relationship(user_id, follower_id)
+    Follow.find_by(follower_id: follower_id, followee_id: user_id)
+  end
+
+  def self.uid_in_database(follower_id)
+    User.find_by(uid: follower_id)
+  end
 end

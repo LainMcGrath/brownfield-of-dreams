@@ -24,8 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'friendship', to: 'friendship#new'
-  post '/friendship/:user_id/:follower_id', to: 'friendship#create'
+  # get 'friendship', to: 'follow#new'
+  post '/follows/:user_id/:follower_id', to: 'follows#create'
 
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"

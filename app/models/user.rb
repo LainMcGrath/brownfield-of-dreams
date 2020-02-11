@@ -32,7 +32,8 @@ class User < ApplicationRecord
     User.find_by(uid: follower_id)
   end
 
-  def friends
-    require "pry"; binding.pry
+  def self.friends(current_user_id)
+    user = User.find(current_user_id)
+    user.followees
   end
 end

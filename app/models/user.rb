@@ -31,4 +31,8 @@ class User < ApplicationRecord
   def self.uid_in_database(follower_id)
     User.find_by(uid: follower_id)
   end
+
+  def friends
+    require "pry"; binding.pry
+  end
 end

@@ -43,10 +43,10 @@
       </ul>
     <% end %>
   </section>
-
+  
   <h3>Your Friends</h3>
   <section id="friendships">
-    <% current_user.friends.each do |friend| %>
+    <% User.friends(current_user.id).each do |friend| %>
       Friend GitHub Handle: <%= friend.login %>
     <% end %>
   </section>

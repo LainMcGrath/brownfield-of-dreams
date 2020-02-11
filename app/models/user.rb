@@ -21,8 +21,11 @@ class User < ApplicationRecord
     current_user.save!
   end
 
-  def self.relationship(user_id, follower_id)
-    Follow.find_by(follower_id: follower_id, followee_id: user_id)
+  def self.relationship(followee_id, current_user_id)
+    if User.find_by(uid: followee_id)
+      user_were_friending_id = User.find_by(uid: followee_id).id
+      Follow.find_by(follower_id: current_user_id, followee_id: user_were_friending_id)
+    end
   end
 
   def self.uid_in_database(follower_id)

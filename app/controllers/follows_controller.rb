@@ -1,8 +1,7 @@
 class FollowsController < ApplicationController
-
   def create
-    Follow.create(follower_id: params[:follower_id], followee_id: params[:user_id])
+    Follow.create_friendship(params[:user_were_friending_id], current_user.id)
     redirect_to dashboard_path
-    flash[:notice] = "You are now friends with #{params[:follower_name]}"
+    flash[:notice] = "You are now friends with #{params[:followee_name]}"
   end
 end

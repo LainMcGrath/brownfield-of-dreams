@@ -22,9 +22,9 @@
     <h3>Github Followers</h3>
       <% user.followers.each do |follower| %>
         <ul class="followers">
-          <li><%= link_to "#{follower.name}", "#{follower.url_link}" %></li>>
-          <% if User.relationship(current_user.id, follower.id) == nil && User.uid_in_database(follower.id) %>
-            <%= button_to "Friend", "/follows/#{current_user.id}/#{follower.id}/#{follower.name}", method: :post %>
+          <li><%= link_to "#{follower.name}", "#{follower.url_link}" %></li>
+          <% if User.relationship(follower.id, current_user.id) == nil && User.uid_in_database(follower.id) %>
+            <%= button_to "Friend", "/follows/#{follower.id}/#{follower.name}", method: :post %>
           <% end %>
         </ul>
       <% end %>

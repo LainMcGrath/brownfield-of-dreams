@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "User can add friend", :vcr do
+RSpec.describe "User can add friend" do
   before(:each) do
     @user = create(:user, token: ENV['GITHUB_TOKEN'])
-    @user_2 = create(:user, token: ENV['JORDANS_GITHUB'], uid: 53549145)
+    @user_2 = create(:user, token: ENV['JORDANS_GITHUB'], uid: 53549145, login: 'jordanholtkamp')
 
     @follower = FollowerFacade.new({ 'login' => 'User', 'html_url' => 'google.com', 'id' => 53549145})
 
@@ -12,7 +12,7 @@ RSpec.describe "User can add friend", :vcr do
     page.set_rack_session(github: @user.email)
   end
 
-  it "if follower has token in database" do
+  it "if follower has token in database", :vcr do
 
     visit dashboard_path
 
@@ -28,7 +28,7 @@ RSpec.describe "User can add friend", :vcr do
     end
   end
 
-  it "if following has token in database" do
+  it "if following has token in database", :vcr do
 
     visit dashboard_path
 
@@ -45,7 +45,7 @@ RSpec.describe "User can add friend", :vcr do
     end
   end
 
-  it "and see the friend in the added friends section" do
+  it "and see the friend in the added friends section", :vcr do
     visit dashboard_path
 
     within "#request_following-#{@follower.id}" do
@@ -53,7 +53,7 @@ RSpec.describe "User can add friend", :vcr do
     end
 
     within "#friendships" do
-      expect(page).to have_content("jordanholtkamp")
+      expect(page).to have_content("Friend GitHub Handle: jordanholtkamp")
     end
   end
 end

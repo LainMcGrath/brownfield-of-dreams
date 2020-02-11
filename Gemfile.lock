@@ -94,7 +94,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.6)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.6)
@@ -138,9 +138,10 @@ GEM
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
-    jbuilder (2.9.1)
-      activesupport (>= 4.2.0)
+    jbuilder (2.10.0)
+      activesupport (>= 5.0.0)
     jquery (0.0.1)
+    json (2.3.0)
     jsonapi-renderer (0.2.2)
     jwt (2.2.1)
     launchy (2.4.3)
@@ -166,7 +167,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     nio4r (2.5.2)
-    nokogiri (1.10.7)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     oauth2 (1.4.3)
       faraday (>= 0.8, < 2.0)
@@ -196,7 +197,7 @@ GEM
       method_source (~> 0.9.0)
     public_suffix (4.0.3)
     puma (3.12.2)
-    rack (2.1.2)
+    rack (2.2.2)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -354,6 +355,7 @@ DEPENDENCIES
   google-api-client
   jbuilder (~> 2.5)
   jquery
+  json
   launchy
   listen (>= 3.0.5, < 3.2)
   omniauth-census!

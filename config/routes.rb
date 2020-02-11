@@ -29,8 +29,10 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
-  get 'auth/github', as: 'github_name_login'
-  get '/auth/:provider/callback', to: "sessions#update"
+  # get 'auth/github', as: 'github_name_login'
+  # get '/auth/:provider/callback', to: "sessions#update"
+
+  get '/auth/:provider/callback', to: 'sessions#update'
 
   get '/dashboard', to: 'users#show'
   get '/about', to: 'about#show'

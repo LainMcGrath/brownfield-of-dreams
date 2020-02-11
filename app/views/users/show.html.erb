@@ -44,6 +44,13 @@
     <% end %>
   </section>
 
+  <h3>Your Friends</h3>
+  <section id="friendships">
+    <% current_user.friends.each do |friend| %>
+      Friend GitHub Handle: <%= friend.login %>
+    <% end %>
+  </section>
+
   <% end %>
     <h1>Bookmarked Segments</h1>
   </section>

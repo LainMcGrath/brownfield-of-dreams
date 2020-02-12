@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # require "pry"; binding.pry
     if (user = User.find_by(email: params[:session][:email])) && user&.authenticate(params[:session][:password])
       session[:user_id] = user.id
       redirect_to dashboard_path

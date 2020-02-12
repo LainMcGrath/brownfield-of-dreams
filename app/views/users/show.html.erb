@@ -6,11 +6,13 @@
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
+    <% if current_user.activated? %>
+      <li>Account status: Active</li>
+    <% end %>
   </ul>
   <section>
     <% if session[:github] == nil %>
       <%= link_to "Log in to GitHub", '/auth/github', class: "btn bg-teal btn-outline " %>
-      <%# <%= button_to "Log in to GitHub", '/auth/github', class: "btn bg-teal btn-outline " %>
     <% else %>
     <section class="github">
     <h3>Github Repositories</h3>

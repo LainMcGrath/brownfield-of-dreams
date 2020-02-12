@@ -24,6 +24,11 @@
       <% user.followers.each do |follower| %>
         <ul class="followers">
           <li><%= link_to "#{follower.name}", "#{follower.url_link}" %></li>
+          <section id = "request-<%= follower.id %>">
+          <% if User.relationship(follower.id, current_user.id) == nil && User.uid_in_database(follower.id) %>
+            <%= button_to "Friend", "/follows/#{follower.id}/#{follower.name}", method: :post %>
+          <% end %>
+        </section>
         </ul>
       <% end %>
 
@@ -31,7 +36,19 @@
     <% user.followings.each do |user| %>
       <ul class ="following">
         <li><%= link_to "#{user.name}", "#{user.url_link}" %></li>
+        <section id = "request_following-<%= user.id %>">
+        <% if User.relationship(user.id, current_user.id) == nil && User.uid_in_database(user.id) %>
+          <%= button_to "Friend", "/follows/#{user.id}/#{user.name}", method: :post %>
+        <% end %>
+      </section>
       </ul>
+    <% end %>
+  </section>
+  
+  <h3>Your Friends</h3>
+  <section id="friendships">
+    <% User.friends(current_user.id).each do |friend| %>
+      Friend GitHub Handle: <%= friend.login %>
     <% end %>
   </section>
 

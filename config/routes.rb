@@ -24,13 +24,11 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/follows/:user_were_friending_id/:followee_name', to: 'follows#create'
 
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
-
-  # get 'auth/github', as: 'github_name_login'
-  # get '/auth/:provider/callback', to: "sessions#update"
 
   get '/auth/:provider/callback', to: 'sessions#update'
 

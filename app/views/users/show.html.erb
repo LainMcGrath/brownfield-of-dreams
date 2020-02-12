@@ -9,7 +9,8 @@
   </ul>
   <section>
     <% if session[:github] == nil %>
-      <%= button_to "Log in to GitHub", github_name_login_path, class: "btn bg-teal btn-outline " %>
+      <%= link_to "Log in to GitHub", '/auth/github', class: "btn bg-teal btn-outline " %>
+      <%# <%= button_to "Log in to GitHub", '/auth/github', class: "btn bg-teal btn-outline " %>
     <% else %>
     <section class="github">
     <h3>Github Repositories</h3>

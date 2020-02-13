@@ -9,3 +9,4 @@ class FollowerFacade
     @id = info['id']
   end
 end
+``

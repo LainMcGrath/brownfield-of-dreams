@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/users/jordanholtkamp?access_token=<JORDANS_GITHUB>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 13 Feb 2020 04:27:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4997'
+      X-Ratelimit-Reset:
+      - '1581571563'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - W/"816427fbbc6559a25066d4627e47c3d5"
+      Last-Modified:
+      - Thu, 13 Feb 2020 04:20:12 GMT
+      X-Oauth-Scopes:
+      - repo
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - E95F:5E26:3192E3:748051:5E44D036
+    body:
+      encoding: ASCII-8BIT
+      string: '{"login":"jordanholtkamp","id":53549145,"node_id":"MDQ6VXNlcjUzNTQ5MTQ1","avatar_url":"https://avatars0.githubusercontent.com/u/53549145?v=4","gravatar_id":"","url":"https://api.github.com/users/jordanholtkamp","html_url":"https://github.com/jordanholtkamp","followers_url":"https://api.github.com/users/jordanholtkamp/followers","following_url":"https://api.github.com/users/jordanholtkamp/following{/other_user}","gists_url":"https://api.github.com/users/jordanholtkamp/gists{/gist_id}","starred_url":"https://api.github.com/users/jordanholtkamp/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jordanholtkamp/subscriptions","organizations_url":"https://api.github.com/users/jordanholtkamp/orgs","repos_url":"https://api.github.com/users/jordanholtkamp/repos","events_url":"https://api.github.com/users/jordanholtkamp/events{/privacy}","received_events_url":"https://api.github.com/users/jordanholtkamp/received_events","type":"User","site_admin":false,"name":null,"company":null,"blog":"","location":null,"email":"jordanholtkamp@gmail.com","hireable":null,"bio":null,"public_repos":46,"public_gists":15,"followers":3,"following":1,"created_at":"2019-08-01T03:18:23Z","updated_at":"2020-02-13T04:20:12Z"}'
+    http_version: null
+  recorded_at: Thu, 13 Feb 2020 04:27:35 GMT
+recorded_with: VCR 5.1.0

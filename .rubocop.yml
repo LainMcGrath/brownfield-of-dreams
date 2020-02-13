@@ -1,5 +1,8 @@
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/Documentation:
+  Enabled: False
   
 AllCops:
   Exclude:

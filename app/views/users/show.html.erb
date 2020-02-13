@@ -11,6 +11,22 @@
     <% end %>
   </ul>
 
+  <section id="bookmarks">
+    <% Video.bookmarks(current_user.id).each do |video| %>
+      Title: <%= video.title %>
+      Description: <%= video.description %>
+    <% end %>
+  </section>
+
+
+
+  <section id="bookmarks">
+    <% Video.bookmarks(current_user.id).each do |video| %>
+      Title: <%= video.title %>
+      Description: <%= video.description %>
+    <% end %>
+  </section>
+
   <%= form_tag '/invitations' do %>
     Your Friend's GitHub Handle: <%= text_field_tag :github_handle %>
     <%= submit_tag "Send an Invite" %>
@@ -52,7 +68,7 @@
       </ul>
     <% end %>
   </section>
-  
+
   <h3>Your Friends</h3>
   <section id="friendships">
     <% User.friends(current_user.id).each do |friend| %>

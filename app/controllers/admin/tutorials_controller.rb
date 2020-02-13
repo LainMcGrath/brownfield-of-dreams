@@ -1,6 +1,5 @@
 class Admin::TutorialsController < Admin::BaseController
-  def new
-  end
+  def new; end
 
   def create
     tutorial = Tutorial.create(tutorial_params)
@@ -19,9 +18,7 @@ class Admin::TutorialsController < Admin::BaseController
 
   def update
     tutorial = Tutorial.find(params[:id])
-    if tutorial.update(tutorial_params)
-      flash[:success] = "#{tutorial.title} tagged!"
-    end
+    flash[:success] = "#{tutorial.title} tagged!" if tutorial.update(tutorial_params)
     redirect_to edit_admin_tutorial_path(tutorial)
   end
 
@@ -31,6 +28,7 @@ class Admin::TutorialsController < Admin::BaseController
     redirect_to admin_dashboard_path
     flash[:notice] = 'Deleted tutorial'
   end
+
   private
 
   def tutorial_params

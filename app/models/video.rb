@@ -4,9 +4,9 @@ class Video < ApplicationRecord
   belongs_to :tutorial
 
   def self.bookmarks(user_id)
-    Tutorial.joins(videos: [:users]).
-    select('videos.*, tutorials.title, users.id').
-    where("users.id = #{user_id}").
-    order('tutorial_id, position')
+    Tutorial.joins(videos: [:users])
+            .select('videos.*, tutorials.title, users.id')
+            .where("users.id = #{user_id}")
+            .order('tutorial_id, position')
   end
 end

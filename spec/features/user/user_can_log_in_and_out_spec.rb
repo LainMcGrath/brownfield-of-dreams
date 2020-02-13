@@ -41,19 +41,4 @@ describe 'User' do
     expect(page).to_not have_content(user.first_name)
     expect(page).to have_content('Sign In')
   end
-
-  it 'is shown an error when incorrect info is entered' do
-    user = create(:user)
-    fake_email = "email@email.com"
-    fake_password = "123"
-
-    visit login_path
-
-    fill_in'session[email]', with: fake_email
-    fill_in'session[password]', with: fake_password
-
-    click_on 'Log In'
-
-    expect(page).to have_content("Looks like your email or password is invalid")
-  end
 end

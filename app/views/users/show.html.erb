@@ -10,6 +10,12 @@
       <li>Account status: Active</li>
     <% end %>
   </ul>
+
+  <%= form_tag '/invitations' do %>
+    Your Friend's GitHub Handle: <%= text_field_tag :github_handle %>
+    <%= submit_tag "Send an Invite" %>
+  <% end %>
+
   <section>
     <% if session[:github] == nil %>
       <%= link_to "Log in to GitHub", '/auth/github', class: "btn bg-teal btn-outline " %>

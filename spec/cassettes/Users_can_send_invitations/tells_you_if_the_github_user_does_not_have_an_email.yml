@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/users/LainMcGrath?access_token=<JORDANS_GITHUB>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 13 Feb 2020 04:18:33 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4990'
+      X-Ratelimit-Reset:
+      - '1581567859'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - W/"8aa691bb497612ed0834ec2f859622a3"
+      Last-Modified:
+      - Wed, 12 Feb 2020 00:25:22 GMT
+      X-Oauth-Scopes:
+      - repo
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - E8EE:572E:502F26:97F68D:5E44CE19
+    body:
+      encoding: ASCII-8BIT
+      string: '{"login":"LainMcGrath","id":53873820,"node_id":"MDQ6VXNlcjUzODczODIw","avatar_url":"https://avatars3.githubusercontent.com/u/53873820?v=4","gravatar_id":"","url":"https://api.github.com/users/LainMcGrath","html_url":"https://github.com/LainMcGrath","followers_url":"https://api.github.com/users/LainMcGrath/followers","following_url":"https://api.github.com/users/LainMcGrath/following{/other_user}","gists_url":"https://api.github.com/users/LainMcGrath/gists{/gist_id}","starred_url":"https://api.github.com/users/LainMcGrath/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/LainMcGrath/subscriptions","organizations_url":"https://api.github.com/users/LainMcGrath/orgs","repos_url":"https://api.github.com/users/LainMcGrath/repos","events_url":"https://api.github.com/users/LainMcGrath/events{/privacy}","received_events_url":"https://api.github.com/users/LainMcGrath/received_events","type":"User","site_admin":false,"name":null,"company":null,"blog":"","location":null,"email":null,"hireable":null,"bio":null,"public_repos":46,"public_gists":2,"followers":2,"following":2,"created_at":"2019-08-07T17:05:43Z","updated_at":"2020-02-12T00:25:22Z"}'
+    http_version: null
+  recorded_at: Thu, 13 Feb 2020 04:18:33 GMT
+recorded_with: VCR 5.1.0

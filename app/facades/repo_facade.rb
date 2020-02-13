@@ -1,5 +1,5 @@
 class RepoFacade
-  attr_reader :name, 
+  attr_reader :name,
               :url
 
   def initialize(info)

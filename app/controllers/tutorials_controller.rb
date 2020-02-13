@@ -4,7 +4,7 @@ class TutorialsController < ApplicationController
     if tutorial.classroom == false || current_user
       @facade = TutorialFacade.new(tutorial, params[:video_id])
     else
-      render file: "/public/404"
+      render file: '/public/404'
     end
   end
 

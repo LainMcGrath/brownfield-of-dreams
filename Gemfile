@@ -23,12 +23,12 @@ gem 'faraday'
 gem 'figaro'
 gem 'google-api-client'
 gem 'jquery'
+gem 'json'
 gem 'omniauth-census', git: 'https://github.com/turingschool-projects/omniauth-census'
+gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'will_paginate'
 gem 'yt', '~> 0.29.1'
-gem 'omniauth-github'
-gem 'json'
 
 group :development, :test do
   gem 'awesome_print'
@@ -45,11 +45,11 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'rack_session_access'
   gem 'rspec-rails'
   gem 'rubocop'
   gem 'vcr'
   gem 'webmock'
-  gem 'rack_session_access'
 end
 
 group :development do

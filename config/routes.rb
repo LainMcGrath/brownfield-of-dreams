@@ -48,4 +48,6 @@ Rails.application.routes.draw do
   resources :user_videos, only:[:create, :destroy]
 
   get '/activate/users/:user_id', to: 'users#update'
+
+  resources :invitations, only: [:create]
 end

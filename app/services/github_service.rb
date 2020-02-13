@@ -13,4 +13,13 @@ class GithubService
     response = Faraday.get("https://api.github.com/user/following?access_token=#{token}")
     JSON.parse(response.body)
   end
+
+  def get_email_from_handle(handle, token)
+    response = Faraday.get("https://api.github.com/users/#{handle}?access_token=#{token}")
+    if response['status'] != '404 Not Found'
+      [JSON.parse(response.body)['email'], JSON.parse(response.body)['login']]
+    else
+      'error'
+    end
+  end
 end

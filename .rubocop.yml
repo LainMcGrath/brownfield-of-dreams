@@ -3,7 +3,19 @@ Style/FrozenStringLiteralComment:
 
 Style/Documentation:
   Enabled: False
-  
+
+Style/GuardClause:
+ Enabled: False
+
+Metrics/LineLength:
+   Max: 130
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
 AllCops:
   Exclude:
     - bin/**/*

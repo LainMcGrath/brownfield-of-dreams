@@ -1,3 +1,5 @@
+User.destroy_all
+
 prework_tutorial = Tutorial.create!({
   "title"=>"Back End Engineering - Prework",
   "description"=>"Videos for prework.",
@@ -113,7 +115,6 @@ m3_tutorial.videos.create!({
   "position"=>6
 })
 
-User.create!(email: 'admin1@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)
-User.create!(email: 'user2@example.com', first_name: 'User', last_name: 'McBosserton', password:  "User", role: :default, token: ENV['GITHUB_TOKEN'])
-User.create!(email: 'jordan@gmail.com', first_name: 'Jordan', last_name: 'McBosserton', password:  "User", role: :default, token: ENV['JORDANS_GITHUB'])
-User.create!(email: 'user@user.com', first_name: 'user', last_name: 'User', password:  "User", role: :default, token: ENV['JORDANS_GITHUB'], uid: 53549145)
+User.create!(email: 'jordan@hotmail.com', first_name: 'Jordan', last_name: 'McBosserton', password:  "User", role: :default, token: ENV['JORDANS_GITHUB'])
+User.create!(email: 'lain@hotmail.com', first_name: 'user', last_name: 'User', password:  "User", role: :default, token: ENV['GITHUB_TOKEN'], uid: 53549145)
+User.create!(email: 'admin@hotmail.com', first_name: 'user', last_name: 'User', password:  "User", role: :admin)

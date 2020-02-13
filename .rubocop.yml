@@ -3,7 +3,10 @@ Style/FrozenStringLiteralComment:
 
 Style/Documentation:
   Enabled: False
-  
+
+Layout/LineLength:
+  Enabled: false
+
 AllCops:
   Exclude:
     - bin/**/*
